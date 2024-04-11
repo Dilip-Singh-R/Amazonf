@@ -12,12 +12,6 @@ pipeline {
             steps {
                 sh 'mvn test'
             }
-            post {
-                always {
-                    junit 'testResults/**/*.xml'
-                    archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
-                }
-            }
         }
 
         stage('docker build') {
