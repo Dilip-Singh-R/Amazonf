@@ -16,7 +16,7 @@ pipeline {
 
         stage('docker build') {
             steps {
-                sh 'docker build -t dilip19681968/Amazon:war .'
+                sh 'docker build -t dilip19681968/amazon:war .'
             }
         }
 
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
                     sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
-                    sh "docker push dilip19681968/Amazon:war"
+                    sh "docker push dilip19681968/amazon:war"
                 }
             }
         }
