@@ -13,7 +13,7 @@ pipeline {
                         }
                         post {
                                 always {
-                                        junit allowEmptyResults:true, testResults: 'target/surefire-reports/*.*xml'
+                                          junit 'testResults: '**/*.*xml'
                                         archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
                                 }
                         }
