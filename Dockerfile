@@ -1,4 +1,4 @@
-FROM maven:3.6
-COPY target/*.war /app/Amazon.War
+FROM tomcat:9
+COPY target/*.war /usr/local/tomcat/webapps/*.War
 WORKDIR /app
 CMD ["./catalina.sh", "run"]
