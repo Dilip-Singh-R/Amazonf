@@ -14,14 +14,14 @@ pipeline {
                         post {
                                 always {
                                         junit 'target/surefire-reports/*.*xml'
-                                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+                                        archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
                                 }
                         }
                 }
 
                 stage ('docker build') {
                         steps {
-                                sh 'docker build -t dilip19681968/java:demo1 .'
+                                sh 'docker build -t dilip19681968/java:amazon .'
                         }
 
                 }
@@ -30,7 +30,7 @@ pipeline {
                         steps {
                           withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
                             sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
-                            sh "docker push dilip19681968/java:demo1"
+                            sh "docker push dilip19681968/java:amazon"
                           }
                  }
             }
